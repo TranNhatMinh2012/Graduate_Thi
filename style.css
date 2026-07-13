@@ -709,6 +709,14 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
   .portfolio-cta{justify-content:center;}
 }
 @media(max-width:768px){
+  .portfolio-hero, .game-section, .wish-section, .memories-section {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+  .grad-section { padding: 2rem 1rem; }
+  .grad-text-wrapper { padding: var(--space-lg); }
+  .grad-title { font-size: clamp(1.8rem, 6vw, 3rem); }
+
   .magazine-spread{grid-template-columns:1fr;max-width:500px;}
   .magazine-visual{padding:var(--space-xl);min-height:280px;}
   .magazine-chibi{max-width:200px;}
@@ -717,13 +725,18 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
   .friend-options{grid-template-columns:repeat(auto-fill,minmax(125px,1fr));}
   .nav-btn span:not(.nav-icon){display:none;}
   .nav-btn{padding:10px 14px;}
-  .memories-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+  .memories-grid{column-count:1;}
 }
 @media(max-width:480px){
   .friend-options{grid-template-columns:1fr 1fr;}
-  .game-card{padding:var(--space-xl) var(--space-lg);}
-  .memories-grid{grid-template-columns:1fr;}
+  .game-card{padding:var(--space-lg) var(--space-sm);}
   .magazine-chibi{max-width:150px;}
   .portfolio-stats{flex-direction:column;gap:var(--space-md);}
   .stat-divider{width:40px;height:1px;}
+  
+  .portfolio-cta, .magazine-actions { flex-direction: column; width: 100%; }
+  .portfolio-cta .btn, .magazine-actions .btn { width: 100%; justify-content: center; }
+  
+  .meme-container img { max-height: 35vh; }
+  .completion-title { font-size: 2rem; }
 }
