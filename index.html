@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chúc mừng tốt nghiệp - Trang web kỉ niệm dành riêng cho bạn">
+  <title>🎓 Chúc Mừng Tốt Nghiệp!</title>
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+
+<body>
+
+  <!-- ===== CINEMATIC INTRO OVERLAY ===== -->
+  <div class="intro-overlay" id="introOverlay">
+    <div class="intro-content">
+      <div class="intro-cap">🎓</div>
+      <div class="intro-text">
+        <span class="intro-line line-1">Dành tặng riêng Thi Dương</span>
+        <span class="intro-line line-2">Một hành trình tuyệt vời</span>
+      </div>
+      <div class="intro-loader">
+        <div class="intro-loader-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CANVAS LAYERS ===== -->
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="bg-ambient"></div>
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <!-- ===== MOUSE SPOTLIGHT ===== -->
+  <div class="spotlight" id="spotlight"></div>
+
+  <!-- ===== TOP NAV ===== -->
+  <nav class="nav-bar" id="navBar">
+    <button class="nav-btn active" data-page="hero" onclick="navigateTo('hero')">
+      <span class="nav-icon">🏠</span><span>Trang chủ</span>
+    </button>
+    <button class="nav-btn" data-page="game" onclick="navigateTo('game')">
+      <span class="nav-icon">🎮</span><span>Mini Game</span>
+    </button>
+    <button class="nav-btn" data-page="memories" onclick="navigateTo('memories')">
+      <span class="nav-icon">📸</span><span>Kỉ niệm</span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       PAGE 1: CINEMATIC PORTFOLIO HERO
+       ============================================================ -->
+  <div class="page active" id="page-hero">
+    <section class="portfolio-hero">
+      <div class="portfolio-topbar reveal-el" data-delay="0">
+
+        <span class="topbar-dots">
+          <span class="dot dot-rose"></span>
+          <span class="dot dot-gold"></span>
+          <span class="dot dot-lavender"></span>
+        </span>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-photo-card reveal-el" data-delay="200">
+          <div class="photo-frame">
+            <img src="images/main/Thi_beauty.png" alt="Dương Nguyễn Hoàng Thi"
+              style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-pills">
+            <span class="pill pill-rose">🎓 Cử nhân</span>
+            <span class="pill pill-lavender">⭐ Top sinh viên</span>
+          </div>
+        </div>
+
+        <div class="portfolio-info">
+          <p class="portfolio-greeting reveal-el" data-delay="400">Người đẹp này là,</p>
+          <h1 class="portfolio-name reveal-el" data-delay="500">
+            <span class="typewriter-text" id="typewriterName"></span>
+            <span class="typewriter-cursor">|</span>
+          </h1>
+          <p class="portfolio-tagline reveal-el" data-delay="700">
+            Và hôm nay là ngày cổ <em>chính thức tốt nghiệp!</em> ✨
+          </p>
+          <div class="portfolio-divider reveal-el" data-delay="800"></div>
+          <p class="portfolio-message reveal-el" data-delay="900">
+            Chặng đường dài đã kết thúc, và hôm nay là ngày cổ tỏa sáng!
+            Cả nhóm tụi tui đều tự hào về cổ. Những năm tháng cùng nhau học tập,
+            cười đùa và vượt qua bao thử thách — tất cả đã tạo nên một hành trình tuyệt vời.
+            Chúc cổ luôn vững bước trên con đường phía trước! 🌟
+          </p>
+
+          <div class="portfolio-stats reveal-el" data-delay="1000">
+            <div class="stat-item">
+              <span class="stat-value counter" data-target="4">0</span>
+              <span class="stat-label">Năm đại học</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-value counter" data-target="6">0</span>
+              <span class="stat-label">Bạn thân gửi lời chúc</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-value">∞</span>
+              <span class="stat-label">Kỉ niệm đẹp</span>
+            </div>
+          </div>
+
+          <div class="portfolio-cta reveal-el" data-delay="1100">
+            <button class="btn btn-gold btn-glow" onclick="navigateTo('game')">
+              <span class="btn-icon">🎮</span> Chơi Mini Game
+            </button>
+            <button class="btn btn-soft" onclick="navigateTo('memories')">
+              <span class="btn-icon">📸</span> Xem Kỉ Niệm
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-emojis">
+        <span class="float-emoji" style="--x:5%;--y:15%;--delay:0s;--dur:6s;">🎓</span>
+        <span class="float-emoji" style="--x:92%;--y:20%;--delay:1s;--dur:7s;">🌸</span>
+        <span class="float-emoji" style="--x:85%;--y:75%;--delay:2s;--dur:5s;">✨</span>
+        <span class="float-emoji" style="--x:8%;--y:80%;--delay:0.5s;--dur:8s;">🎉</span>
+        <span class="float-emoji" style="--x:50%;--y:5%;--delay:1.5s;--dur:6.5s;">💛</span>
+      </div>
+    </section>
+
+    <!-- NEW GRADUATION SECTION (scrollable part of page-hero) -->
+    <section class="grad-section">
+      <div class="grad-container reveal-el">
+        <div class="grad-image-wrapper">
+          <img src="images/main/Thi_grad.png" alt="Graduation" class="grad-image">
+        </div>
+        <div class="grad-text-wrapper">
+          <h2 class="grad-title">Chúc mừng tốt nghiệp! 🎓</h2>
+          <p class="grad-desc">
+            Chúc mừng tân cử nhân Dương Nguyễn Hoàng Thi đã hoàn thành xuất sắc hành trình Đại học! Một chương mới đầy
+            hứa hẹn đang chờ đón bạn phía trước. Hãy luôn tươi cười và tiến bước tự tin nhé!
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============================================================
+       PAGE 2: MINI GAME
+       ============================================================ -->
+  <div class="page" id="page-game">
+    <section class="game-section">
+      <div class="section-header">
+        <div class="section-tag reveal-el">✦ MINI GAME ✦</div>
+        <h2 class="section-title reveal-el">Đoán Ai Đây? 💌</h2>
+        <p class="section-desc reveal-el">Đoán coi thử mấy meme dưới đây là ai nhóe</p>
+      </div>
+
+      <div class="game-progress reveal-el">
+        <div class="progress-info">
+          <span id="progressLabel">Đã đoán đúng: 0/6</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="game-card reveal-el" id="gameCard">
+        <div class="quote-header">
+          <span class="quote-number" id="quoteNumber">Câu đố #1</span>
+          <span class="quote-status" id="quoteStatus"></span>
+        </div>
+        <div class="meme-container">
+          <img id="memeImg" src="" alt="Meme ảnh bạn bè">
+        </div>
+        <div class="quote-nav">
+          <button class="btn btn-soft btn-sm" id="prevQuoteBtn" onclick="changeQuote(-1)">← Câu trước</button>
+          <span class="quote-pager" id="quotePager">1 / 6</span>
+          <button class="btn btn-soft btn-sm" id="nextQuoteBtn" onclick="changeQuote(1)">Câu tiếp →</button>
+        </div>
+      </div>
+
+      <p class="game-prompt reveal-el">👇 Ai đây? (Đoán trúng mới cho đọc lời chúc)</p>
+      <div class="friend-options" id="friendOptions"></div>
+      <div class="game-feedback" id="gameFeedback"></div>
+    </section>
+  </div>
+
+  <!-- ============================================================
+       PAGE 3: MAGAZINE WISH
+       ============================================================ -->
+  <div class="page" id="page-wish">
+    <section class="wish-section">
+      <div class="magazine-spread" id="magazineSpread">
+        <div class="magazine-visual" id="magazineVisual">
+          <span class="magazine-deco deco-1">✦</span>
+          <span class="magazine-deco deco-2">❋</span>
+          <div class="magazine-chibi" id="magazineChibi">
+            <span class="placeholder-icon">🎨</span>
+            <span>Ảnh chibi</span>
+          </div>
+          <div class="magazine-name-visual" id="magazineNameVisual"></div>
+          <div class="magazine-label">gửi lời chúc</div>
+        </div>
+        <div class="magazine-content">
+          <div class="magazine-tag" id="magazineTag">LỜI CHÚC TỐT NGHIỆP</div>
+          <div class="magazine-from" id="magazineFrom"></div>
+          <p class="magazine-wish-text" id="magazineWishText"></p>
+          <div class="magazine-audio" id="magazineAudio">
+            <button class="audio-play-btn" id="audioPlayBtn" onclick="toggleAudio()">▶</button>
+            <div class="audio-wave" id="audioWave"></div>
+            <span class="audio-label">🎵 Nghe lời chúc</span>
+          </div>
+          <audio id="wishAudio" preload="none"></audio>
+          <div class="magazine-actions">
+            <button id="nextWishBtn" class="btn btn-gold btn-sm btn-glow" onclick="nextUnguessedQuote()">
+              <span class="btn-icon">✨</span> Đoán câu tiếp
+            </button>
+            <button class="btn btn-soft btn-sm" onclick="navigateTo('hero')">
+              <span class="btn-icon">🏠</span> Trang chủ
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============================================================
+       PAGE 4: MEMORIES
+       ============================================================ -->
+  <div class="page" id="page-memories">
+    <section class="memories-section">
+      <div class="section-header">
+        <div class="section-tag reveal-el">✦ KỈ NIỆM ✦</div>
+        <h2 class="section-title reveal-el">Những Khoảnh Khắc Đáng Nhớ 💛</h2>
+        <p class="section-desc reveal-el">Cùng nhìn lại hành trình tuyệt vời mà tụi mình đã có bên nhau</p>
+      </div>
+      <div class="memories-grid" id="memoriesGrid"></div>
+      <div style="text-align:center;" class="reveal-el">
+        <button class="btn btn-gold btn-glow" onclick="navigateTo('hero')"><span class="btn-icon">🏠</span> Về Trang
+          Chủ</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== COMPLETION ===== -->
+  <div class="completion-overlay" id="completionOverlay">
+    <div class="completion-content">
+      <div class="completion-emoji">🎉</div>
+      <h2 class="completion-title"><span class="gold-text">Tuyệt vời!</span></h2>
+      <p class="completion-desc">Bạn đã đoán đúng tất cả lời chúc! 🥳</p>
+
+      <!-- DANH SÁCH LỜI CHÚC TRỰC QUAN -->
+      <div id="completionFriendsList"
+        style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem; max-height: 250px; overflow-y: auto; padding: 0.5rem;">
+        <!-- JS will populate this -->
+      </div>
+
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-gold btn-glow" onclick="closeCompletion();navigateTo('memories')"><span
+            class="btn-icon">📸</span> Xem Kỷ Niệm</button>
+        <button class="btn btn-soft" onclick="closeCompletion();navigateTo('hero')"><span class="btn-icon">🏠</span>
+          Trang Chủ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+  </div>
+
+  <script src="script.js?v=3"></script>
+</body>
+
+</html>
