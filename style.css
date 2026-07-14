@@ -28,8 +28,8 @@
 
 /* ========== RESET ========== */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:16px;}
-body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark);min-height:100dvh;overflow-x:hidden;line-height:1.6;}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden;max-width:100%;}
+body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark);min-height:100dvh;overflow-x:hidden;max-width:100%;line-height:1.6;}
 
 /* ============================================================
    CINEMATIC INTRO
@@ -196,6 +196,8 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
   transition:transform var(--transition-smooth);
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 .photo-frame:hover{transform:rotate(-1deg) scale(1.02);}
 .photo-placeholder{
