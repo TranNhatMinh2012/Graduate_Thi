@@ -29,7 +29,7 @@
 /* ========== RESET ========== */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;font-size:16px;}
-body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark);min-height:100vh;overflow-x:hidden;line-height:1.6;}
+body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark);min-height:100dvh;overflow-x:hidden;line-height:1.6;}
 
 /* ============================================================
    CINEMATIC INTRO
@@ -130,7 +130,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
 }
 
 /* ========== PAGE SYSTEM ========== */
-.page{display:none;min-height:100vh;position:relative;z-index:1;}
+.page{display:none;min-height:100dvh;position:relative;z-index:1;}
 .page.active{display:block;}
 
 /* ========== NAV ========== */
@@ -162,7 +162,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
    PAGE 1: CINEMATIC PORTFOLIO HERO
    ============================================================ */
 .portfolio-hero{
-  min-height:100vh;display:flex;flex-direction:column;
+  min-height:100dvh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   padding:80px var(--space-xl) var(--space-2xl);position:relative;
 }
@@ -368,7 +368,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
    PAGE 2: MINI GAME
    ============================================================ */
 .game-section{
-  min-height:100vh;padding:90px var(--space-xl) var(--space-2xl);
+  min-height:100dvh;padding:90px var(--space-xl) var(--space-2xl);
   display:flex;flex-direction:column;align-items:center;
 }
 .section-header{text-align:center;margin-bottom:var(--space-2xl);}
@@ -499,7 +499,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
    PAGE 3: MAGAZINE SPREAD
    ============================================================ */
 .wish-section{
-  min-height:100vh;display:flex;align-items:center;
+  min-height:100dvh;display:flex;align-items:center;
   justify-content:center;padding:90px var(--space-xl) var(--space-2xl);
   perspective: 1500px;
 }
@@ -615,7 +615,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
 /* ============================================================
    PAGE 4: MEMORIES
    ============================================================ */
-.memories-section{min-height:100vh;padding:90px var(--space-xl) var(--space-2xl);}
+.memories-section{min-height:100dvh;padding:90px var(--space-xl) var(--space-2xl);}
 .memories-grid{
   column-count: 2;
   column-gap: var(--space-lg);
@@ -671,8 +671,8 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
 
 .lightbox{position:fixed;inset:0;background:rgba(45,36,64,0.92);display:none;align-items:center;justify-content:center;z-index:300;backdrop-filter:blur(10px);cursor:pointer;}
 .lightbox.active{display:flex;animation:fadeIn 0.3s ease-out;}
-.lightbox-content{max-width:90vw;max-height:85vh;border-radius:var(--radius-lg);overflow:hidden;cursor:default;}
-.lightbox-content img{width:100%;height:100%;object-fit:contain;}
+.lightbox-content{display:flex;justify-content:center;align-items:center;max-width:95vw;max-height:95dvh;cursor:default;}
+.lightbox-content img{max-width:100%;max-height:95dvh;width:auto;height:auto;object-fit:contain;border-radius:var(--radius-lg);box-shadow:0 10px 40px rgba(0,0,0,0.3);}
 .lightbox-close{
   position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;
   background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);
@@ -709,9 +709,15 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
   .portfolio-cta{justify-content:center;}
 }
 @media(max-width:768px){
+  .floating-emojis { display: none; }
   .portfolio-hero, .game-section, .wish-section, .memories-section {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
+  }
+  .wish-section {
+    align-items: flex-start;
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
   .grad-section { padding: 2rem 1rem; }
   .grad-text-wrapper { padding: var(--space-lg); }
@@ -720,7 +726,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
   .magazine-spread{grid-template-columns:1fr;max-width:500px;}
   .magazine-visual{padding:var(--space-xl);min-height:280px;}
   .magazine-chibi{max-width:200px;}
-  .magazine-content{padding:var(--space-xl);}
+  .magazine-content{padding:var(--space-lg);}
   .magazine-content::before{display:none;}
   .friend-options{grid-template-columns:repeat(auto-fill,minmax(125px,1fr));}
   .nav-btn span:not(.nav-icon){display:none;}
@@ -731,6 +737,7 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--text-dark)
   .friend-options{grid-template-columns:1fr 1fr;}
   .game-card{padding:var(--space-lg) var(--space-sm);}
   .magazine-chibi{max-width:150px;}
+  .magazine-content{padding:var(--space-md);}
   .portfolio-stats{flex-direction:column;gap:var(--space-md);}
   .stat-divider{width:40px;height:1px;}
   

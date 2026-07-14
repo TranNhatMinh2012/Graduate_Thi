@@ -24,7 +24,7 @@ const FRIENDS = [
   },
   {
     id: 5, name: "Khôi", emoji: "🎸", gradient: "linear-gradient(135deg,#c471f5,#fa71cd)", accent: "linear-gradient(180deg,#c471f5,#fa71cd)",
-    chibiMeme: "images/chibi_meme/Khôi.png", chibiImg: "images/chibi/Khôi.png", audioSrc: null,
+    chibiMeme: "images/chibi_meme/Khôi.png", chibiImg: "images/chibi/Khôi.png", audioSrc: "voices/Khôi.m4a",
     wish: "Tui biết là cô gái của tui sẽ làm được mè, luôn tin tưởng và tự hào về người bạn này. Chúc mừng bà đã tốt nghiệp nhéeeeee. Hành trình phía trước sẽ còn nhiều sự sung sướng và đáng để chờ đợi, nhưng mà tui biết Thi Jun sẽ làm được mè thui chưa kể là luôn có sự ủng hộ từ tụi tui thì không thì là không thể phải không nè. Rồi sẽ đến một ngày cô gái của chúng tui sẽ đi gặp idol của cổ, sẽ bao mấy nụ mấy chầu thật đã luôn. Chúc mừng Thi Jun tốt nghiệp và rực rỡ nhất nhé, love u"
   },
   {
@@ -592,6 +592,8 @@ function viewWish(friendId) {
 // MAGAZINE WISH PAGE
 // ==========================================
 function showMagazinePage(friend) {
+  stopAudio();
+  
   const visual = document.getElementById('magazineVisual');
   visual.style.background = friend.gradient;
 
@@ -658,14 +660,27 @@ function toggleAudio() {
   const wave = document.getElementById('audioWave');
 
   if (!a.src || a.src === window.location.href) {
-    showToast('🔊 Chưa có file audio — hãy thêm file MP3 vào thư mục audio/');
+    showToast('🔊 Chưa có file audio — hãy kiểm tra lại file');
     return;
   }
   if (audioPlaying) {
     a.pause(); btn.textContent = '▶'; wave.classList.remove('playing'); audioPlaying = false;
   } else {
-    a.play().catch(() => showToast('🔊 Không thể phát audio'));
-    btn.textContent = '⏸'; wave.classList.add('playing'); audioPlaying = true;
+    try {
+      const playPromise = a.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          btn.textContent = '⏸'; wave.classList.add('playing'); audioPlaying = true;
+        }).catch(err => {
+          showToast('🔊 Vui lòng bấm nút Play để nghe');
+          btn.textContent = '▶'; wave.classList.remove('playing'); audioPlaying = false;
+        });
+      } else {
+        btn.textContent = '⏸'; wave.classList.add('playing'); audioPlaying = true;
+      }
+    } catch(e) {
+      showToast('🔊 Vui lòng bấm nút Play để nghe');
+    }
   }
   a.onended = () => { btn.textContent = '▶'; wave.classList.remove('playing'); audioPlaying = false; };
 }
