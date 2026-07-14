@@ -29,7 +29,7 @@ const FRIENDS = [
   },
   {
     id: 6, name: "Minh", emoji: "🦋", gradient: "linear-gradient(135deg,#89f7fe,#66a6ff)", accent: "linear-gradient(180deg,#89f7fe,#66a6ff)",
-    chibiMeme: "images/chibi_meme/Minh.png", chibiImg: "images/chibi/Minh.png", audioSrc: "voices/Minh.aac",
+    chibiMeme: "images/chibi_meme/Minh.png", chibiImg: "images/chibi/Minh.png", audioSrc: "voices/Minh.mp3",
     wish: "Chúc mừng Mom Thi đã chính thức tốt nghiệp nhaaa\nMột chặng đường đẹp đã khép lại và một hành trình mới cũng vừa bắt đầu. Mong rằng Mom sẽ luôn gặp thật nhiều may mắn, giữ được sự nhiệt huyết, niềm vui và sự tự tin để chinh phục những điều mình mong muốn.\nBiết là mom đang có nhiều áp lực, nhưng mom hãy luôn vững tin nha, vì lúc nào cũng có tụi tui ở bên để lắng nghe mom chia sẻ mọi điều\nChúc cho Mom Thi của chúng ta luôn hạnh phúc, thành công và sống thật rực rỡ theo cách của riêng mình\n毕业快乐，前程似锦！"
   }
 ];
