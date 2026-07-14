@@ -29,7 +29,7 @@ const FRIENDS = [
   },
   {
     id: 6, name: "Minh", emoji: "🦋", gradient: "linear-gradient(135deg,#89f7fe,#66a6ff)", accent: "linear-gradient(180deg,#89f7fe,#66a6ff)",
-    chibiMeme: "images/chibi_meme/Minh.png", chibiImg: "images/chibi/Minh.png", audioSrc: "voices/Minh.m4a",
+    chibiMeme: "images/chibi_meme/Minh.png", chibiImg: "images/chibi/Minh.png", audioSrc: "voices/Minh.aac",
     wish: "Chúc mừng Mom Thi đã chính thức tốt nghiệp nhaaa\nMột chặng đường đẹp đã khép lại và một hành trình mới cũng vừa bắt đầu. Mong rằng Mom sẽ luôn gặp thật nhiều may mắn, giữ được sự nhiệt huyết, niềm vui và sự tự tin để chinh phục những điều mình mong muốn.\nBiết là mom đang có nhiều áp lực, nhưng mom hãy luôn vững tin nha, vì lúc nào cũng có tụi tui ở bên để lắng nghe mom chia sẻ mọi điều\nChúc cho Mom Thi của chúng ta luôn hạnh phúc, thành công và sống thật rực rỡ theo cách của riêng mình\n毕业快乐，前程似锦！"
   }
 ];
@@ -618,6 +618,7 @@ function showMagazinePage(friend) {
   const audioContainer = document.getElementById('magazineAudio');
   if (friend.audioSrc) {
     audioEl.src = friend.audioSrc;
+    audioEl.load(); // Force browser to reload media
     audioContainer.style.display = 'flex';
     // Auto-play audio after animation starts
     setTimeout(() => {
@@ -672,14 +673,18 @@ function toggleAudio() {
         playPromise.then(() => {
           btn.textContent = '⏸'; wave.classList.add('playing'); audioPlaying = true;
         }).catch(err => {
-          showToast('🔊 Vui lòng bấm nút Play để nghe');
+          if (err.name === 'NotAllowedError') {
+             showToast('🔊 Trình duyệt chặn tự động phát, hãy bấm nút Play');
+          } else {
+             showToast('🔊 Lỗi tải file: ' + err.message);
+          }
           btn.textContent = '▶'; wave.classList.remove('playing'); audioPlaying = false;
         });
       } else {
         btn.textContent = '⏸'; wave.classList.add('playing'); audioPlaying = true;
       }
     } catch(e) {
-      showToast('🔊 Vui lòng bấm nút Play để nghe');
+      showToast('🔊 Lỗi phát audio');
     }
   }
   a.onended = () => { btn.textContent = '▶'; wave.classList.remove('playing'); audioPlaying = false; };
@@ -687,7 +692,10 @@ function toggleAudio() {
 
 function stopAudio() {
   const a = document.getElementById('wishAudio');
-  if (a) { a.pause(); a.currentTime = 0; }
+  if (a) { 
+    a.pause(); 
+    try { if (a.readyState > 0) a.currentTime = 0; } catch(e) {} 
+  }
   const btn = document.getElementById('audioPlayBtn');
   const wave = document.getElementById('audioWave');
   if (btn) btn.textContent = '▶';
